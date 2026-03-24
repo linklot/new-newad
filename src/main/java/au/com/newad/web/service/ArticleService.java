@@ -10,33 +10,29 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
-    @Transactional(readOnly = true)
     public List<Article> getTop4ArticlesForSlidesView() {
         final long categoryId = 21L;
 
         return articleRepository.findTop4ByCategoryIdOrderByTimePublishedDesc(categoryId);
     }
 
-    @Transactional(readOnly = true)
     public List<Article> getTop5ArticlesForCategoryView(final Long categoryId) {
         return articleRepository.findTop5TopLevelCategoryId(categoryId);
     }
 
-    @Transactional(readOnly = true)
     public List<Article> getTop8ByLevelOneCategoryId(final Long levelOneCategoryId) {
         return articleRepository.getTop8ByLevelOneCategoryId(levelOneCategoryId);
     }
 
-    @Transactional(readOnly = true)
     public List<Article> getArticlesByCategoryId(final Long categoryId) {
         return articleRepository.getArticlesByCategoryId(categoryId);
     }
 
-    @Transactional(readOnly = true)
     public Article getArticleById(final Long articleId) {
         Article article = articleRepository.findById(articleId).orElse(null);
         if (article != null) {
@@ -48,7 +44,6 @@ public class ArticleService {
         return article;
     }
 
-    @Transactional(readOnly = true)
     public List<Article> getOtherArticlesInSameCategory(final Long categoryId, final Long articleId) {
         List<Article> articles = getArticlesByCategoryId(categoryId);
 
