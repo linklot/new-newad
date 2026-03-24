@@ -12,7 +12,7 @@
 </head>
 <body ng-app="newadApp">
 
-<div th:replace="~{fragments::header}"></div>
+<div th:replace="~{fragments::header(${levelOneCategories})}"></div>
 
 <div class="wrapper col2">
   <div id="breadcrumb">
@@ -48,6 +48,6 @@
 
 <div class="clear"></div>
 
-<div th:replace="~{fragments::footer}"></div>
+<div th:replace="~{fragments::footer(${currentYear})}"></div>
 </body>
 </html>

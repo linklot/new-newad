@@ -16,7 +16,7 @@
 </head>
 <body ng-app="newadApp">
 
-<div th:replace="~{fragments :: header}"></div>
+<div th:replace="~{fragments :: header(${levelOneCategories})}"></div>
 
 <div th:replace="~{fragments :: slides(${topArticles})}"></div>
 
@@ -64,7 +64,7 @@
   </div>
 </div>
 
-<div th:replace="~{fragments::footer}"></div>
+<div th:replace="~{fragments::footer(${currentYear})}"></div>
 
 </body>
 </html>

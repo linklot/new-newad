@@ -3,6 +3,7 @@ package au.com.newad.web.controller;
 import java.util.List;
 
 import au.com.newad.web.model.entity.Article;
+import au.com.newad.web.model.entity.Category;
 import au.com.newad.web.service.ArticleService;
 import au.com.newad.web.service.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -31,17 +32,35 @@ public class IndexController {
         List<Article> immiArticles = articleService.findTop5ArticlesForCategoryView(4L);
         model.addAttribute("immiArticles", immiArticles);
 
+        List<Category> levelOneCategories = categoryService.getLevelOneCategories();
+        model.addAttribute("levelOneCategories", levelOneCategories);
+
+        model.addAttribute("currentYear", getCurrentYear());
+
         return "index";
     }
 
     @GetMapping("/about")
     public String about(Model model) {
+        List<Category> levelOneCategories = categoryService.getLevelOneCategories();
+        model.addAttribute("levelOneCategories", levelOneCategories);
+
+        model.addAttribute("currentYear", getCurrentYear());
+
         return "about";
     }
 
     @GetMapping("/contact")
     public String contact(Model model) {
+        List<Category> levelOneCategories = categoryService.getLevelOneCategories();
+        model.addAttribute("levelOneCategories", levelOneCategories);
+
+        model.addAttribute("currentYear", getCurrentYear());
+
         return "contact";
     }
 
+    private String getCurrentYear() {
+        return String.valueOf(java.time.Year.now().getValue());
+    }
 }
