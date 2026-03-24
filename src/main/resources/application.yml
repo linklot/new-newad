@@ -8,11 +8,15 @@ spring:
     password: sa@newad2026
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+    defer-datasource-initialization: true
   h2:
     console:
       enabled: true
+      path: /h2-console
 
 logging:
   level:
-    root: WARN
-    au.com.newad.web: INFO
+    root: INFO
+    au.com.newad.web: DEBUG
