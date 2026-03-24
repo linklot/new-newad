@@ -35,4 +35,25 @@ public class ArticleService {
     public List<Article> getArticlesByCategoryId(final Long categoryId) {
         return articleRepository.getArticlesByCategoryId(categoryId);
     }
+
+    @Transactional(readOnly = true)
+    public Article getArticleById(final Long articleId) {
+        Article article = articleRepository.findById(articleId).orElse(null);
+        if (article != null) {
+            String rawContent = article.getContent().getContent()
+                    .replace("\\r\\n", "")
+                    .replace("\\\"", "'");
+            article.getContent().setContent(rawContent);
+        }
+        return article;
+    }
+
+    @Transactional(readOnly = true)
+    public List<Article> getOtherArticlesInSameCategory(final Long categoryId, final Long articleId) {
+        List<Article> articles = getArticlesByCategoryId(categoryId);
+
+        articles.removeIf(a -> a.getId().equals(articleId));
+
+        return articles;
+    }
 }

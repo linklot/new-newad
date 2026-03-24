@@ -58,4 +58,28 @@ public class StudyController {
 
         return "study/category";
     }
+
+    @GetMapping("/study/{categoryShortName}/{articleId}")
+    public String article(Model model,
+            @PathVariable final String categoryShortName,
+            @PathVariable final Long articleId) {
+        Category currentCategory = categoryService.getCategoryByShortName(categoryShortName);
+        model.addAttribute("currentCategory", currentCategory);
+
+        Category topCategory = currentCategory.getParentCategory();
+        model.addAttribute("topCategory", topCategory);
+
+        List<Category> levelOneCategories = categoryService.getLevelOneCategories();
+        model.addAttribute("levelOneCategories", levelOneCategories);
+
+        Article article = articleService.getArticleById(articleId);
+        model.addAttribute("article", article);
+
+        List<Article> otherArticles = articleService.getOtherArticlesInSameCategory(currentCategory.getId(), articleId);
+        model.addAttribute("relatedArticles", otherArticles);
+
+        model.addAttribute("currentYear", ModelPropUtils.getCurrentYearAsString());
+
+        return "study/article";
+    }
 }
