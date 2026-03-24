@@ -363,14 +363,14 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 }
 
 #articles .articlelist .title {
-  width: 480px;
+  width: 550px;
   font-weight: bold;
   font-size: larger;
   float: left;
 }
 
 #articles .articlelist .summary {
-  width: 480px;
+  width: 550px;
   margin: 5px 0 5px 0;
   float: left;
 }

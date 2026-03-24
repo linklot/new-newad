@@ -18,10 +18,10 @@
       <li>&#187;</li>
       <li><a href="/">Home</a></li>
       <li>&#187;</li>
-      <li><a href="/study">Study</a></li>
+      <li><a href="/immi">Immigration</a></li>
       <li>&#187;</li>
       <li class="current">
-        <a th:href="'/study/' + ${currentCategory.shortName}" th:text="${currentCategory.longName}"></a>
+        <a th:href="'/immi/' + ${currentCategory.shortName}" th:text="${currentCategory.longName}"></a>
       </li>
     </ul>
   </div>
@@ -36,7 +36,8 @@
         <ul class="articlelist">
           <li th:each="article: ${articles}">
             <div class="title">
-              <a th:href="'/study/' + ${currentCategory.shortName} + '/' + ${article.id}"><span th:text="${article.title}"></span></a>
+              <a th:href="'/immi/' + ${currentCategory.shortName} + '/' + ${article.id}"
+                 th:text="${article.title}"></a>
             </div>
             <div class="summary" th:text="${article.summary}"></div>
           </li>
@@ -47,12 +48,11 @@
     <div id="column">
       <div class="subnav">
         <h2 th:text="${topCategory.longName}"></h2>
-          <ul>
-            <li th:each="c: ${topCategory.subCategories}">
-              <a th:href="'/' + ${topCategory.shortName} + '/' + ${c.shortName}" th:text="${c.longName}">
-              </a>
-            </li>
-          </ul>
+        <ul>
+          <li th:each="c: ${topCategory.subCategories}">
+            <a th:href="'/' + ${topCategory.shortName} + '/' + ${c.shortName}" th:text="${c.longName}"></a>
+          </li>
+        </ul>
       </div>
     </div>
 

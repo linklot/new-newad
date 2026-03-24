@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>新澳东 - 移民版</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="/css/default.css" type="text/css"/>
+  <script type="text/javascript" src="/js/jquery.js"></script>
+</head>
+<body>
+
+<div th:replace="~{fragments :: header(${levelOneCategories})}"></div>
+
+<div class="wrapper col2">
+  <div id="breadcrumb">
+    <ul>
+      <li class="first">You Are Here</li>
+      <li>&#187;</li>
+      <li><a href="/">Home</a></li>
+      <li>&#187;</li>
+      <li class="current"><a href="/immi">Immigration</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="wrapper col3">
+  <div id="container">
+    <div id="content">
+      <h1>新澳东移民业务介绍</h1>
+      <img class="imgr" src="/picture/17.jpg" alt="澳洲移民"/>
+      <p>
+        我们拥有多名经验丰富的注册移民代理，同时与国内一直保持密切的合作。我们擅长处理各种疑难杂症的移民案件，特别是在申请雇主担保工作签证（457签证）中表现突出。公司不断与时俱进，及时分析澳大利亚的移民走势和动态，为客户量身定做符合他们的移民方案，高效完备地准备签证材料，确保了每一位客户都拿到满意的签证。所以凡是我们公司的客户，都被我们专业的服务和认真的态度所打动。</p>
+      <p>
+        我们以真诚、负责的态度对待每一位客户。经过我们的努力，公司业务不断扩大，现在业务已经涉及澳洲各类商业及投资移民签证（132，188，888，890，892），雇主担保工作签证（457）,
+        雇主担保永居签证（186/187) , 独立技术移民，州政府担保及亲属担保移民签证 (189, 190, 489,
+        887)，亲属团聚、旅游签证等各种移民申请，同时还有各类移民上诉申请。</p>
+      <p>
+        通过多年的经验积累，我们有一套完整的处理案件的程序，保证了每位客户申请的及时和准确，同时我们对每一位客户的信息严格保密，也保障了在我公司办理业务的安全性。我们希望通过我们的努力能够使客户早日移民澳大利亚，实现他们心目中的澳洲梦。</p>
+      <p>&nbsp;</p>
+
+      <div id="articles">
+        <ul class="articlelist">
+          <li th:each="article: ${immiArticles}">
+            <div class="title">
+              【<a th:href="'/immi/' + ${article.category.shortName}"
+                  th:text="${article.category.longName}"></a>】
+              <a th:href="'/immi/' + ${article.category.shortName} + '/' + ${article.id}"
+                 th:text="${article.title}"></a>
+            </div>
+            <div class="summary" th:text="${article.summary}"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="column">
+      <div class="subnav">
+        <h2 th:text="${category.longName}"></h2>
+        <ul>
+          <li th:each="c: ${category.subCategories}">
+            <a th:href="'/' + ${category.shortName} + '/' + ${c.shortName}"
+               th:text="${c.longName}"></a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="clear"></div>
+  </div>
+</div>
+
+<div th:replace="~{fragments::footer(${currentYear})}"></div>
+
+</body>
+</html>

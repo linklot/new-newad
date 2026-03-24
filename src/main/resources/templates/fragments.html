@@ -112,7 +112,9 @@
           <div class="floater">
             <h2 th:text="${article.title}"><a th:href="${article.id} + '.html'"></a></h2>
             <p th:text="${article.summary}">Summary</p>
-            <p class="readmore"><a th:href="${article.id} + '.html'">详细内容 &raquo;</a></p>
+            <p class="readmore">
+              <a th:href="'/' + ${article.category.parentCategory.shortName} + '/'+ ${article.category.shortName} + '/' + ${article.id}">详细内容 &raquo;</a>
+            </p>
           </div>
         </div>
       </div>
