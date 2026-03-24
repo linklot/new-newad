@@ -15,4 +15,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
             order by c.sequence
             """)
     List<Category> getCategoriesByIds(List<Long> ids);
+
+    Category getCategoryByShortName(String shortName);
 }

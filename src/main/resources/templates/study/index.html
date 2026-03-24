@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>新澳东 - 留学版</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="/css/default.css" type="text/css"/>
+  <script type="text/javascript" src="/js/jquery.js"></script>
+</head>
+<body>
+
+<div th:replace="~{fragments :: header(${levelOneCategories})}"></div>
+
+<div class="wrapper col2">
+  <div id="breadcrumb">
+    <ul>
+      <li class="first">You Are Here</li>
+      <li>&#187;</li>
+      <li><a href="/">Home</a></li>
+      <li>&#187;</li>
+      <li class="current"><a href="/study">Study</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="wrapper col3">
+  <div id="container">
+    <div id="content">
+      <h1>新澳东留学业务介绍</h1>
+      <img class="imgl" src="/picture/16.jpg" alt="澳洲留学"/>
+      <p>我们的留学顾问均是拥有长期在澳留学及职场经历的专业人士,
+        熟悉澳洲的文化生活及政治环境。对澳大利亚的各级中学,大学,职业学院,语言学校有切身的体验并保持着密切的联系。</p>
+      <p>
+        我们办理申请来澳留学的学生签证，在澳学生的升学和转学，延签和上诉等申请。我公司与多所院校有合作项目，通过我公司办理申请学校、升学和转学的同学，将有机会获得学校的奖学金。无论您的学习成绩如何，我们都将通过努力为您找到合适的学校。同时我们会根据最新的移民政策与移民紧缺专业的动向，为您选择适合您的专业和院校。</p>
+      <p>从留学规划, 专业及学校选择, 签证申请到最后出国准备, 我们将与您保持密切的联系与沟通,
+        并及时让您了解申请的进展. 您到达澳洲后, 我们可以提供一系列的服务, 如接机, 住宿, 学校安排,
+        社交活动, 职场规划及其它后续服务, 直到您顺利完成学业。</p>
+      <p>&nbsp;</p>
+
+      <div id="articles">
+      <ul class="articlelist">
+        <li th:each="article: ${studyArticles}">
+          <div class="title">
+            【<a th:href="'/study/' + ${article.category.shortName}"><span th:text="${article.category.longName}"></span></a>】
+            <a th:href="'/study/' + ${article.category.shortName} + '/' + ${article.id}"><span th:text="${article.title}"></span></a>
+          </div>
+          <div class="summary"><span th:text="${article.summary}"></span></div>
+        </li>
+      </ul>
+    </div>
+
+    </div>
+
+    <div id="column">
+      <div class="subnav">
+        <h2 th:text="${category.longName}"></h2>
+        <ul>
+          <li th:each="c: ${category.subCategories}">
+            <a th:href="'/' + ${category.shortName} + '/' + ${c.shortName}"><span th:text="${c.longName}"></span></a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="clear"></div>
+  </div>
+</div>
+
+<div th:replace="~{fragments::footer(${currentYear})}"></div>
+
+</body>
+</html>

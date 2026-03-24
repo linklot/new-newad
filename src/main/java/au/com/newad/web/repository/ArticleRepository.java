@@ -20,4 +20,22 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
             """)
     List<Article> findTop5TopLevelCategoryId(Long parentId);
 
+    @Query("""
+            SELECT a
+            FROM Article a
+            JOIN a.category c
+            WHERE c.parentCategory.id = :levelOneCategoryId
+            ORDER BY a.timePublished DESC
+            LIMIT 8
+            """)
+    List<Article> getTop8ByLevelOneCategoryId(Long levelOneCategoryId);
+
+    @Query("""
+            SELECT a
+            FROM Article a
+            JOIN a.category c
+            WHERE c.id = :categoryId
+            ORDER BY a.timePublished DESC
+            """)
+    List<Article> getArticlesByCategoryId(Long categoryId);
 }

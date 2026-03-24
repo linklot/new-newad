@@ -85,7 +85,6 @@ Licence: <a href="#">Website Template Licence</a>
 .sf-menu ul {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, .2);
   min-width: 12em;
-  allow long menu items to determine submenu width *
   width: 12em; /* no auto sub width for IE7, see white-space comment below */
 }
 
@@ -94,7 +93,6 @@ Licence: <a href="#">Website Template Licence</a>
   padding: 10px 20px;
   text-decoration: none;
   zoom: 1; /* IE7 */
-  */
 }
 
 .sf-menu a {

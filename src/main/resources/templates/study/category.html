@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>New Audong Study & Immigration Services</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="/css/default.css" type="text/css" />
+  <script type="text/javascript" src="/js/jquery.js"></script>
+</head>
+<body>
+
+<div th:replace="~{fragments :: header(${levelOneCategories})}"></div>
+
+<div class="wrapper col2">
+  <div id="breadcrumb">
+    <ul>
+      <li class="first">You Are Here</li>
+      <li>&#187;</li>
+      <li><a href="/">Home</a></li>
+      <li>&#187;</li>
+      <li><a href="/study">Study</a></li>
+      <li>&#187;</li>
+      <li class="current">
+        <a th:href="'/study/' + ${currentCategory.shortName}"><span th:text="${currentCategory.longName}"></span></a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="wrapper col3">
+  <div id="container">
+    <div id="content">
+      <h1 th:text="${currentCategory.longName}"></h1>
+
+      <div id="articles">
+        <ul class="articlelist">
+          <li th:each="article: ${articles}">
+            <div class="title">
+              <a th:href="'/study/' + ${currentCategory.shortName} + '/' + ${article.id}"><span th:text="${article.title}"></span></a>
+            </div>
+            <div class="summary" th:text="${article.summary}"></div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div id="column">
+      <div class="subnav">
+        <h2 th:text="${topCategory.longName}"></h2>
+          <ul>
+            <li th:each="c: ${topCategory.subCategories}">
+              <a th:href="'/' + ${topCategory.shortName} + '/' + ${c.shortName}">
+                <span th:text="${c.longName}"></span>
+              </a>
+            </li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+</div>
+
+<div th:replace="~{fragments::footer(${currentYear})}"></div>
+
+</body>
+</html>

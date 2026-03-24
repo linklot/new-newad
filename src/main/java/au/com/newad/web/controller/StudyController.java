@@ -13,51 +13,49 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RequiredArgsConstructor
 @Controller
-public class IndexController {
+public class StudyController {
 
-    private static final Logger log = LoggerFactory.getLogger(IndexController.class);
+    private static final Logger log = LoggerFactory.getLogger(StudyController.class);
+
     private final CategoryService categoryService;
     private final ArticleService articleService;
 
-    @GetMapping("/")
+    @GetMapping("/study")
     public String index(Model model) {
-        List<Article> topArticles = articleService.getTop4ArticlesForSlidesView();
-        model.addAttribute("topArticles", topArticles);
+        Category cate = categoryService.getCategoryById(3L);
+        model.addAttribute("category", cate);
 
-        List<Article> studyArticles = articleService.getTop5ArticlesForCategoryView(3L);
+        List<Category> levelOneCategories = categoryService.getLevelOneCategories();
+        model.addAttribute("levelOneCategories", levelOneCategories);
+
+        List<Article> studyArticles = articleService.getTop8ByLevelOneCategoryId(3L);
         model.addAttribute("studyArticles", studyArticles);
 
-        List<Article> immiArticles = articleService.getTop5ArticlesForCategoryView(4L);
-        model.addAttribute("immiArticles", immiArticles);
-
-        List<Category> levelOneCategories = categoryService.getLevelOneCategories();
-        model.addAttribute("levelOneCategories", levelOneCategories);
-
         model.addAttribute("currentYear", ModelPropUtils.getCurrentYearAsString());
 
-        return "index";
+        return "study/index";
     }
 
-    @GetMapping("/about")
-    public String about(Model model) {
+    @GetMapping("/study/{shortName}")
+    public String category(Model model, @PathVariable final String shortName) {
         List<Category> levelOneCategories = categoryService.getLevelOneCategories();
         model.addAttribute("levelOneCategories", levelOneCategories);
 
+        Category currentCategory = categoryService.getCategoryByShortName(shortName);
+        model.addAttribute("currentCategory", currentCategory);
+
+        Category topCategory = currentCategory.getParentCategory();
+        model.addAttribute("topCategory", topCategory);
+
+        List<Article> articles = articleService.getArticlesByCategoryId(currentCategory.getId());
+        model.addAttribute("articles", articles);
+
         model.addAttribute("currentYear", ModelPropUtils.getCurrentYearAsString());
 
-        return "about";
-    }
-
-    @GetMapping("/contact")
-    public String contact(Model model) {
-        List<Category> levelOneCategories = categoryService.getLevelOneCategories();
-        model.addAttribute("levelOneCategories", levelOneCategories);
-
-        model.addAttribute("currentYear", ModelPropUtils.getCurrentYearAsString());
-
-        return "contact";
+        return "study/category";
     }
 }
