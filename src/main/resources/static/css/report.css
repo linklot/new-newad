@@ -1,0 +1,37 @@
+#homecontent .fl_right {
+  font-size: 12px;
+}
+
+.report_wrapper {
+  padding-top: 20px;
+}
+
+#homecontent .fl_right .report_list ul li {
+  margin: 0px;
+  padding: 0 10px 0 10px;
+  height: 25px;
+  line-height: 25px;
+  border-bottom: none;
+  cursor: pointer;
+}
+
+#homecontent .fl_right .input_area {
+  padding-top: 10px;
+}
+
+.input_area input[type="text"] {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.input_area textarea {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.send_msg {
+  margin-top: 10px;
+  padding: 5px 0 5px 10px;
+  border-radius: 5px;
+}

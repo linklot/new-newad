@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>About New Audong</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="/css/default.css" type="text/css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body ng-app="newadApp">
+
+<div th:replace="~{fragments::header}"></div>
+
+<div class="wrapper col2">
+  <div id="breadcrumb">
+    <ul>
+      <li class="first">You Are Here</li>
+      <li>&#187;</li>
+      <li><a href="/">Home</a></li>
+      <li>&#187;</li>
+      <li class="current"><a href="/about">About</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="wrapper col3">
+  <div id="homecontent">
+    <div class="fl_left">
+      <div th:replace="~{fragments :: aboutus}"></div>
+    </div>
+
+    <div class="fl_right">
+      <div th:replace="~{fragments :: rightside}"></div>
+    </div>
+
+    <br class="clear" />
+  </div>
+</div>
+
+<div th:replace="~{fragments::footer}"></div>
+
+</body>
+</html>

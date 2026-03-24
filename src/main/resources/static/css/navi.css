@@ -1,0 +1,267 @@
+/*
+Template Name: School Education
+File: Navigation CSS
+Author: OS Templates
+Author URI: #
+Licence: <a href="#">Website Template Licence</a>
+*/
+
+#header #topnav {
+  display: block;
+  float: right;
+  width: 500px;
+  margin: 5px 0 0 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-align: left;
+}
+
+#topnav .sf-menu li {
+
+}
+
+#topnav .sf-menu li a {
+  color: #f4f4f4;
+}
+
+#topnav .sf-menu li:hover a {
+  color: #22C0FD;
+}
+
+#topnav .sf-menu li.active a {
+  color: #22C0FD;
+}
+
+#topnav .sf-menu .sub-menu li:hover a {
+  background: #4A5155;
+}
+
+
+/*** SUPERFISH MENU ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sf-menu li {
+  position: relative;
+}
+
+.sf-menu ul {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  z-index: 99;
+}
+
+.sf-menu > li {
+  float: left;
+}
+
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul {
+  display: block;
+}
+
+.sf-menu a {
+  display: block;
+  position: relative;
+}
+
+.sf-menu ul ul {
+  top: 0;
+  left: 100%;
+}
+
+
+/*** DEMO SKIN ***/
+.sf-menu {
+  float: left;
+}
+
+.sf-menu ul {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .2);
+  min-width: 12em;
+  allow long menu items to determine submenu width *
+  width: 12em; /* no auto sub width for IE7, see white-space comment below */
+}
+
+.sf-menu a {
+  /*font-size: 16px;*/
+  padding: 10px 20px;
+  text-decoration: none;
+  zoom: 1; /* IE7 */
+  */
+}
+
+.sf-menu a {
+  /*color: #13a;*/
+}
+
+.sf-menu li {
+  /*background: #BDD2FF;*/
+  white-space: nowrap; /* no need for Supersubs plugin */
+  *white-space: normal; /* ...unless you support IE7 (let it wrap) */
+  -webkit-transition: background .2s;
+  transition: background .2s;
+}
+
+.sf-menu ul li {
+  background: #333;
+}
+
+.sf-menu ul ul li {
+  background: #9AAEDB;
+}
+
+.sf-menu li:hover,
+.sf-menu li.sfHover {
+  /*background: #4A5155;*/
+  /* only transition out, not in */
+  -webkit-transition: none;
+  transition: none;
+}
+
+/*** arrows (for all except IE7) **/
+.sf-arrows .sf-with-ul {
+  padding-right: 2.5em;
+  *padding-right: 1em; /* no CSS arrows for IE7 (lack pseudo-elements) */
+}
+
+/* styling for both css and generated arrows */
+.sf-arrows .sf-with-ul:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  margin-top: -3px;
+  height: 0;
+  width: 0;
+  /* order of following 3 rules important for fallbacks to work */
+  border: 5px solid transparent;
+  border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+  border-top-color: rgba(255, 255, 255, .5);
+}
+
+.sf-arrows > li > .sf-with-ul:focus:after,
+.sf-arrows > li:hover > .sf-with-ul:after,
+.sf-arrows > .sfHover > .sf-with-ul:after {
+  border-top-color: white; /* IE8 fallback colour */
+}
+
+/* styling for right-facing arrows */
+.sf-arrows ul .sf-with-ul:after {
+  margin-top: -5px;
+  margin-right: -3px;
+  border-color: transparent;
+  border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+  border-left-color: rgba(255, 255, 255, .5);
+}
+
+.sf-arrows ul li > .sf-with-ul:focus:after,
+.sf-arrows ul li:hover > .sf-with-ul:after,
+.sf-arrows ul .sfHover > .sf-with-ul:after {
+  border-left-color: white;
+}
+
+
+/* ----------------------------------------------Column Navigation-------------------------------------*/
+
+#column .subnav {
+  display: block;
+  width: 250px;
+  padding: 25px;
+  background-color: #F9F9F9;
+  margin-bottom: 30px;
+}
+
+#column .subnav h2 {
+  margin: 0 0 20px 0;
+  padding: 0 0 14px 0;
+  font-size: 20px;
+  font-weight: normal;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #666666;
+  background-color: #F9F9F9;
+  line-height: normal;
+  border-bottom: 1px dotted #666666;
+}
+
+#column .subnav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#column .subnav li {
+  margin: 0 0 3px 0;
+  padding: 0;
+}
+
+#column .subnav ul ul, #column .subnav ul ul ul, #column .subnav ul ul ul ul, #column .subnav ul ul ul ul ul {
+  border-top: none;
+  padding-top: 0;
+}
+
+#column .subnav a {
+  display: block;
+  margin: 0;
+  padding: 5px 10px 5px 20px;
+  color: #777777;
+  background: url("../image/blue_file.gif") no-repeat 10px center #F9F9F9;
+  text-decoration: none;
+  border-bottom: 1px dotted #666666;
+}
+
+#column .subnav a:hover {
+  color: #02ACEE;
+  background-color: #F9F9F9;
+}
+
+#column .subnav ul ul a, #column .subnav ul ul ul a, #column .subnav ul ul ul ul a, #column .subnav ul ul ul ul ul a {
+  background: url("../image/black_file.gif") no-repeat #F9F9F9;
+}
+
+#column .subnav ul ul a {
+  padding-left: 40px;
+  background-position: 30px center;
+}
+
+#column .subnav ul ul ul a {
+  padding-left: 50px;
+  background-position: 40px center;
+}
+
+#column .subnav ul ul ul ul a {
+  padding-left: 60px;
+  background-position: 50px center;
+}
+
+#column .subnav ul ul ul ul ul a {
+  padding-left: 70px;
+  background-position: 60px center;
+}
+
+#header #banner {
+  width: 810px;
+  float: left;
+  margin: 10px 0 0 0;
+  overflow: hidden;
+}
+
+#header #banner ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#header #banner ul li {
+  float: left;
+}
+
+#header #banner ul li.local_banner {
+  margin: 0 40px 0 10px;
+}

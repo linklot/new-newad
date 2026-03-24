@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Home Page</title>
+</head>
+<body>
+
+<div th:fragment="header">
+  <div class="wrapper col1">
+    <div id="header">
+      <div id="logo">
+        <a href="/">
+          <img src="/image/logo.png" height="80" alt="New Audong Study &amp; Immigration Service" />
+        </a>
+      </div>
+      <div id="banner">
+        <ul>
+          <li class="local_banner"><img src="/image/immi_banner_1.jpg" alt="新澳东留学移民"></li>
+          <li><a href="/" target="_blank" title="新澳东房地产"><img src="/image/realestate icon.jpg" alt="新澳东房地产"></a></li>
+        </ul>
+      </div>
+      <div id="topnav">
+        <ul class="sf-menu">
+          <li class="active"><a href="/">Home</a></li>
+
+          <li class="last"><a href="/about">关于我们</a></li>
+          <li><a href="/contact">联系我们</a></li>
+
+        </ul>
+      </div>
+      <br class="clear" />
+    </div>
+  </div>
+</div>
+
+<footer th:fragment="footer">
+  <div class="wrapper col4">
+    <div id="footer">
+      <div class="footbox">
+        <h2>About</h2>
+        <ul>
+          <li><a href="/about">关于我们</a></li>
+        </ul>
+      </div>
+      <div class="footbox">
+        <h2>Social</h2>
+        <ul>
+          <li>新浪微博：@新澳东之旅</li>
+          <li class="last">公众微信：新澳东之旅</li>
+        </ul>
+      </div>
+      <div class="footbox wide">
+        <ul>
+          <li>澳洲公司注册号(ACN)：164658299</li>
+          <li>澳洲留学中介注册号：Qualified Education Agent Counsellor E074</li>
+          <li>澳洲注册移民代理号：MARN 0964138</li>
+          <li>澳洲移民代理行为准则 <a href="https://www.mara.gov.au/tools-for-registered-agents/code-of-conduct" target="_blank">Code of Conduct</a></li>
+        </ul>
+      </div>
+      <br class="clear" />
+    </div>
+  </div>
+  <!-- ####################################################################################################### -->
+  <div class="wrapper col5">
+    <div id="copyright">
+      <p class="fl_left">Copyright &copy; 2013-2026 - All Rights Reserved - <a href="/">New Audong</a></p>
+      <p class="fl_right"></p>
+      <br class="clear" />
+    </div>
+  </div>
+</footer>
+
+<div th:fragment="rightside">
+  <script src="/js/report.js"></script>
+
+  <div class="report_wrapper" ng-controller="EmailCtrl">
+    <form ng-submit="submit()">
+      <h2 style="color: #006699;"><i class="fa fa-clipboard"></i> 免费领取报告</h2>
+      <div class="report_list">
+        <ul>
+          <li ng-click="change('tzym')"><i ng-class="reportNeeded.tzym ? 'fa fa-check-square-o' : 'fa fa-square-o'"></i> 澳洲商业投资移民签证简介</li>
+          <li ng-click="change('jsym')"><i ng-class="reportNeeded.jsym ? 'fa fa-check-square-o' : 'fa fa-square-o'"></i> 澳大利亚独立技术移民简介</li>
+          <li ng-click="change('gzdb')"><i ng-class="reportNeeded.gzdb ? 'fa fa-check-square-o' : 'fa fa-square-o'"></i> 澳大利亚雇主担保移民简介</li>
+          <li ng-click="change('dxlx')"><i ng-class="reportNeeded.dxlx ? 'fa fa-check-square-o' : 'fa fa-square-o'"></i> 大学生留学方案</li>
+          <li ng-click="change('zxlx')"><i ng-class="reportNeeded.zxlx ? 'fa fa-check-square-o' : 'fa fa-square-o'"></i> 中学生留学方案</li>
+        </ul>
+      </div>
+      <div class="input_area form-group">
+        <input type="text" class="form-control" placeholder="您的姓名（必填）" ng-model="user_name" ng-change="checkForm()" />
+        <input type="text" class="form-control" placeholder="您的邮箱地址（必填）" ng-model="user_email" ng-change="checkForm()" />
+        <input type="text" class="form-control" placeholder="您的电话号码（必填）" ng-model="user_phone" ng-change="checkForm()" />
+        <textarea cols="30" rows="5" class="form-control" placeholder="我们可以如何帮助您？" ng-model="user_comment"></textarea>
+        <input type="submit" class="btn btn-info btn-sm" ng-disabled="!formSubmitable" value="立即获取资料" />
+        <div class="send_msg bg-success" ng-show="reportSent">报告已发送。请稍后查看您的邮件。 谢谢！</div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div th:fragment="slides(topArticles)">
+  <div class="wrapper col2">
+    <div id="featured_slide">
+      <div th:each="article: ${topArticles}">
+        <div class="featured_box"><a th:href="${article.id} + '.html'"><img th:src="${article.picUrl}" th:alt="${article.title}" /></a>
+          <div class="floater">
+            <h2 th:text="${article.title}"><a th:href="${article.id} + '.html'"></a></h2>
+            <p th:text="${article.summary}">Summary</p>
+            <p class="readmore"><a th:href="${article.id} + '.html'">详细内容 &raquo;</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:fragment="aboutus">
+  <h2 class="bold">关于我们</h2>
+
+  <p>
+    新澳东国际咨询服务中心(New Audong International Consulting Services)是澳大利亚正式注册的留学移民服务机构，公司设在澳大利亚墨尔本，拥有多名经验丰富的专业留学顾问和注册移民代理。
+  </p>
+  <p>我们办理申请来澳留学的学生签证，在澳学生的升学和转学，延签和上诉等申请。我们的移民业务包括办理澳洲各类商业及投资移民签证（132，188，888，890，892），雇主担保工作签证（457）, 雇主担保永居签证（186/187) , 独立技术移民，州政府担保及亲属担保移民签证 (189, 190, 489, 887)，亲属团聚、旅游签证等各种移民申请，同时还有各类移民上诉申请。</p>
+  <p>您如果在墨尔本，您可以亲临我们办公室与我们的顾问面对面进行咨询。您如果在中国，我们也可以充分利用互联网的通讯平台, 有效快捷地与您沟通。只要您进入我们的网站, 利用“在线评估”, 或是通过电子邮件,电话, QQ/SKYPE/MSN留言,留下您的基本情况及需求, 我们就会尽快打电话或写电子邮件与您详细讨论。我们会及时发布留学移民最新信息，您可以关注我们的微博和微信，与我们进行互动。</p>
+  <p><strong>我们的理念：</strong> 梦想, 激情, 自信, 坚持</p>
+  <p><strong>梦想：</strong>立志将本中心建成诚信,高效,优质,周到的留学移民服务机构。 </p>
+  <p><strong>激情：</strong>我们对事业充满激情,并真心希望将自己多年在澳生活的学习与工作经验与新一代留学生与新移民分享。</p>
+  <p><strong>自信：</strong>我们自信通过专业的服务, 能让您顺利实现您的澳洲梦。</p>
+  <p><strong>坚持：</strong>我们会持之以恒地提高我们的办事效率与质量, 周到热情地为您服务。</p>
+  <p>&nbsp;</p><p></p>
+  <p>
+    <b>自信，因而敢于坚持<br/>
+      激情，方能放飞梦想<br/>
+      ——专访新澳东国际咨询服务中心创始人梁维东</b>
+  </p>
+  <p>
+    “梦想、激情、自信、坚持”是梁维东老师所创办的新澳东国际咨询服务中心的企业理念，同时，这四个关键词用来诠释梁老师其人也再恰当不过。十几岁一个人只身从云南远赴广东求学，又辗转到深圳工作，几年后出国留学，移民，工作，再到后来的辞职创业，梁老师用他的亲身经历证明了一句话——“追求梦想，永远都不晚。”
+  </p>
+  <p>
+    创业犹如千军万马过独木桥，存在着很大的风险。年轻人一无所有，去创业、去闯荡，理所应当。然而，对于已过不惑之年，拖家带口且已拥有一份稳定优薪的工作的梁老师而言，似乎有些冒险。
+  </p>
+  <p>于是，梁老师毅然决然地选择放弃“金饭碗”，学习移民课程，攻读移民法，将一切归零，白手起家。可能在别人看来，这一切有些鲁莽，然而对梁老师而言，这一切却是因为“自信”。自信给了梁老师很大的勇气和动力。他深知自己爱做什么，能做什么，会做什么。的确，短短几年时间里梁老师果然用他的实际行动和可喜的成果证明了他的决定都是正确的。</p>
+  <p>创业不可能不经历风雨。在最艰难的时候，梁老师从没想过放弃，他坚持追逐心中的梦想，坚持相信自己的能力。就是凭借这这样的信念，梁老师自己一点一点摸索全新的领域，摸爬滚打一路走来。经过创业的甘苦，如今，梁老师的新澳东国际咨询服务中心已经初具规模，并在业内拥有极高的口碑和信誉。梁老师也因自身优质的服务和对专业领域知识的精通，被澳新电视中文台邀请担任《留学那些事》的特邀顾问嘉宾，他用他摸索和累积的知识，通过电视这个平台，去为更多困惑的留学生排忧解难。他所主持的《澳洲择校及选择专业》，《关心留学未来，解读移民政策》，《毕业后如何找到专业工作》等系列节目都广受好评。</p>
+  <p>也难怪梁老师如此受到大家的欢迎，因为他无论是上节目，还是平时做咨询，从来都是对大家推心置腹，并且知无不言，言无不尽。他不会夸大任何事实或一味怂恿大家盲目出国，而是本着一颗助人的心，认真负责地为前来咨询的人士根据他们个人的情况分析出所有的利弊，并指出一条最适当的路给咨询者们。</p>
+</div>
+
+</body>
+</html>

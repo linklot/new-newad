@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>New Audong Study &amp; Immigration Services</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="/css/default.css" type="text/css" />
+  <link rel="stylesheet" href="/css/report.css" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="/js/jquery.js"></script>
+  <script type="text/javascript" src="/js/jquery.cycle.min.js"></script>
+  <script type="text/javascript" src="/js/index.js"></script>
+  <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body ng-app="newadApp">
+
+<div th:replace="~{fragments :: header}"></div>
+
+<div th:replace="~{fragments :: slides(${topArticles})}"></div>
+
+<div class="wrapper col3">
+  <div id="homecontent">
+    <div class="fl_left">
+      <div class="column2">
+        <div class="services">
+          <div class="service" style="float:left;">
+            <h2 class="bold"><a href="/study">留学版</a></h2>
+            <div class="imgholder"><a href="/study"><img src="/picture/14.png" alt="澳洲留学" /></a></div>
+            <p>我们的留学顾问均是拥有长期在澳留学及职场经历的专业人士，熟悉澳洲的文化生活及政治环境。对澳大利亚的各级中学、大学、职业学院、语言学校有切身的体验并保持着密切的联系。</p>
+
+            <ul>
+              <li th:each="sa: ${studyArticles}">
+                <a th:href="'/study/' + ${sa.category.shortName} + '/' + ${sa.id}"><span th:text="${#strings.abbreviate(sa.title,22)}"></span></a>
+              </li>
+            </ul>
+
+            <p class="readmore"><a href="/study">更多内容 &raquo;</a></p>
+          </div>
+          <div class="service" style="float:right;">
+            <h2 class="bold"><a href="/immi">移民版</a></h2>
+            <div class="imgholder"><a href="/immi"><img src="/picture/15.jpg" alt="澳洲移民" /></a></div>
+            <p>我们拥有多名经验丰富的注册移民代理，同时与国内一直保持密切的合作。我们擅长处理各种疑难杂症的移民案件，特别是在申请雇主担保工作签证（457签证）中表现突出。</p>
+
+            <ul>
+              <li th:each="ia: ${immiArticles}">
+                <a th:href="'/immi/' + ${ia.category.shortName} + '/' + ${ia.id}"><span th:text="${#strings.abbreviate(ia.title, 22)}"></span></a>
+              </li>
+            </ul>
+
+            <p class="readmore"><a href="/immi">更多内容 &raquo;</a></p>
+          </div>
+        </div>
+        <br class="clear" />
+      </div>
+    </div>
+
+    <div class="fl_right">
+      <div th:replace="~{fragments :: rightside}"></div>
+    </div>
+
+    <br class="clear" />
+  </div>
+</div>
+
+<div th:replace="~{fragments::footer}"></div>
+
+</body>
+</html>
