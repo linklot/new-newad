@@ -108,9 +108,14 @@
   <div class="wrapper col2">
     <div id="featured_slide">
       <div th:each="article: ${topArticles}">
-        <div class="featured_box"><a th:href="${article.id} + '.html'"><img th:src="${article.picUrl}" th:alt="${article.title}" /></a>
+        <div class="featured_box">
+          <a th:href="'/' + ${article.category.parentCategory.shortName} + '/'+ ${article.category.shortName} + '/' + ${article.id}">
+            <img th:src="${article.picUrl}" th:alt="${article.title}" />
+          </a>
           <div class="floater">
-            <h2 th:text="${article.title}"><a th:href="${article.id} + '.html'"></a></h2>
+            <a th:href="'/' + ${article.category.parentCategory.shortName} + '/'+ ${article.category.shortName} + '/' + ${article.id}">
+              <h2 th:text="${article.title}"></h2>
+            </a>
             <p th:text="${article.summary}">Summary</p>
             <p class="readmore">
               <a th:href="'/' + ${article.category.parentCategory.shortName} + '/'+ ${article.category.shortName} + '/' + ${article.id}">详细内容 &raquo;</a>
