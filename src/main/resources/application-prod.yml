@@ -5,6 +5,11 @@ spring:
   datasource:
     password: sa@newad2026
 
+management:
+  endpoints:
+    access:
+      default: none
+
 logging:
   level:
     root: INFO
